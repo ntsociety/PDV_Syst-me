@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /pdv-systeme/
+
+# Rediriger toutes les requêtes qui ne correspondent pas à un fichier existant ou un répertoire existant vers index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ routes.php [L]
