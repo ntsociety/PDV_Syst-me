@@ -35,7 +35,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/pdv-systeme/admin/inc/ctx-head.php';
                                     <td><?= $item['id'] ?></td>
                                     <?php if ($item['image'] != "") :  ?>
                                         <td>
-                                            <img src="<?= $adminBase ?>assets/produits/<?= $item['image'] ?>" style="height: 50px; width:100px;" class="object-fit-cover img-fluid" alt="">
+                                            <img src="<?= $adminBase ?>assets/produits/<?= $item['image'] ?>" style="height: 50px; width:100px; object-fit:contain;" class="object-fit-contain img-fluid" alt="">
                                         </td>
                                     <?php else : ?>
                                         <td>Pas d'image</td>

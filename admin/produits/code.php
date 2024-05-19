@@ -27,7 +27,7 @@ if (isset($_POST['update'])) {
 
 
         $tmp = $_FILES["image"]["tmp_name"];
-        $imageName = $_FILES["image"]["name"];
+        $imageName = date('Y-m-d') . '_' . $_FILES["image"]["name"];
         // dossier de stockage
         $folder = $_SERVER['DOCUMENT_ROOT'] . "/pdv-systeme/admin/assets/produits/" . $imageName;
         // extension
@@ -99,7 +99,7 @@ if (isset($_POST['save'])) {
     if (isset($_FILES['image']) && $_FILES["image"]['size'] > 0) {
 
         $tmp = $_FILES["image"]["tmp_name"];
-        $imageName = $_FILES["image"]["name"];
+        $imageName = date('Y-m-d') . '_' . $_FILES["image"]["name"];
         // dossier de stockage
         $folder = $_SERVER['DOCUMENT_ROOT'] . "/pdv-systeme/admin/assets/produits/" . $imageName;
         // extension

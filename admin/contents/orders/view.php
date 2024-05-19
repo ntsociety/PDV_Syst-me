@@ -11,7 +11,8 @@ if (!isset($_GET['track']) || empty($_GET['track'])) {
     <div class="card mt-4 shadow-sm">
         <div class="card-header">
             <h4 class="mb-0">Voir Commande
-                <a href="<?= $adminBase ?>orders" class="btn btn-primary float-end">Retour</a>
+                <a href="<?= $adminBase ?>orders/view-print?track=<?= $_GET['track'] ?>" class="btn btn-info mx-2 btn-sm float-end">Imprimer</a>
+                <a href="<?= $adminBase ?>orders" class="btn btn-primary btn-sm float-end">Retour</a>
             </h4>
         </div>
         <div class="card-body">
@@ -58,48 +59,49 @@ if (!isset($_GET['track']) || empty($_GET['track'])) {
                         </div>
                     </div>
                 </div>
-                <?php
-                $orderItemsQuery = "SELECT oi.quantity as orderItemsQty, oi.prix as orderItemsPrice, o.*, oi.*, p.* 
+
+            <?php else : ?>
+                <p colspan="4" class="text-center">Pas de données</p>
+            <?php
+            endif;
+
+            ?>
+            <?php
+            $orderItemsQuery = "SELECT oi.quantity as orderItemsQty, oi.prix as orderItemsPrice, o.*, oi.*, p.* 
                 from orders o, order_items oi, produits p where oi.order_id= o.id and p.id = oi.prod_id
                 and o.tracking_no= '$tracking_no'";
-                $orderItems = mysqli_query($db_connect, $orderItemsQuery);
-                if (mysqli_num_rows($orderItems) > 0) :
+            $orderItems = mysqli_query($db_connect, $orderItemsQuery);
+            if (mysqli_num_rows($orderItems) > 0) :
 
-                ?>
-                    <h4 class="my-3">Contenu de la commande</h4>
-                    <table class="table table-bordered table-striped">
-                        <thead>
+            ?>
+                <h4 class="my-3">Contenu de la commande</h4>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Prix</th>
+                            <th>Quantité</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($orderItems as $item) : ?>
                             <tr>
-                                <th>Produit</th>
-                                <th>Prix</th>
-                                <th>Quantité</th>
-                                <th>Total</th>
+                                <td>
+                                    <img src="<?= $item['image'] != "" ? "/pdv-systeme/admin/assets/produits/" . $item['image'] : '' ?>" style="height: 50px; width:50px;" class="object-fit-cover img-fluid" alt="">
+                                    <?= $item['name']; ?>
+                                </td>
+                                <td width="15%" class="fw-bold text-center"><?= number_format($item['orderItemsPrice'], 0); ?></td>
+                                <td width="15%" class="fw-bold text-center"><?= $item['orderItemsQty']; ?></td>
+                                <td width="15%" class="fw-bold text-center"><?= number_format($item['orderItemsPrice'] * $item['orderItemsQty'], 0); ?></td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($orderItems as $item) : ?>
-                                <tr>
-                                    <td>
-                                        <img src="<?= $item['image'] != "" ? "/pdv-systeme/admin/assets/produits/" . $item['image'] : '' ?>" style="height: 50px; width:50px;" class="object-fit-cover img-fluid" alt="">
-                                        <?= $item['name']; ?>
-                                    </td>
-                                    <td width="15%" class="fw-bold text-center"><?= number_format($item['orderItemsPrice'], 0); ?></td>
-                                    <td width="15%" class="fw-bold text-center"><?= $item['orderItemsQty']; ?></td>
-                                    <td width="15%" class="fw-bold text-center"><?= number_format($item['orderItemsPrice'] * $item['orderItemsQty'], 0); ?></td>
-                                </tr>
-                            <?php endforeach ?>
-                            <tr>
-                                <td class="fw-bold text-end">Prix Total</td>
-                                <td colspan="3" class="fw-bold text-end"><?= number_format($item['prix_total'], 0) ?>FCFA</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                <?php else : ?>
-                    <p colspan="4" class="text-center">Pas de données</p>
-                <?php
-                endif;
-
-                ?>
+                        <?php endforeach ?>
+                        <tr>
+                            <td class="fw-bold text-end">Prix Total</td>
+                            <td colspan="3" class="fw-bold text-end"><?= number_format($item['prix_total'], 0) ?>FCFA</td>
+                        </tr>
+                    </tbody>
+                </table>
             <?php else : ?>
                 <p colspan="4" class="text-center">Pas de données</p>
             <?php

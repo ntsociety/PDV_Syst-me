@@ -17,7 +17,7 @@
                         <a class="nav-link" href=""><?= $admin['name'] ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/pdv-systeme/logout">Se déconnecter</a>
+                        <a class="btn btn-danger" href="/pdv-systeme/logout">Se déconnecter</a>
                     </li>
                 <?php
                 } else {

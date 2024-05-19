@@ -18,8 +18,8 @@ if (!isset($_SESSION['produitItems'])) {
             </div>
             <div class="modal-body">
                 <a href="<?= $adminBase ?>orders" class="btn btn-secondary">Fermé</a>
-                <button type="button" class="btn btn-danger">Imprimer</button>
-                <button type="button" class="btn btn-warning">Télécharger</button>
+                <button type="button" class="btn btn-danger" onclick="printBillingArea()">Imprimer</button>
+                <button type="button" class="btn btn-warning" onclick="downloadPDF('<?= $_SESSION['orderData']['invoice_no'] ?>')">Télécharger</button>
             </div>
         </div>
     </div>
@@ -132,6 +132,8 @@ if (!isset($_SESSION['produitItems'])) {
                     ?>
                         <div class="mt-4 text-end">
                             <button class="btn btn-primary px-4 mx-1" id="saveOrder">Enregistrer</button>
+                            <button type="button" class="btn btn-danger" onclick="printBillingArea()">Imprimer</button>
+                            <button type="button" class="btn btn-warning" onclick="downloadPDF('<?= $_SESSION['orderData']['invoice_no'] ?>')">Télécharger</button>
                         </div>
                     <?php } ?>
                 </div>

@@ -4,6 +4,8 @@ if (!isset($_SESSION['adminLogined'])) {
   header("location: /pdv-systeme/login");
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -26,9 +28,23 @@ if (!isset($_SESSION['adminLogined'])) {
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- bootstrap icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- js pdf -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 </head>
+<style>
+  .btn-primary {
+    background-color: #175497 !important;
+  }
 
+  .bg-primary {
+    background-color: #175497 !important;
+  }
+
+  .text-primary {
+    background-color: #175497 !important;
+  }
+</style>
 
 <body class="sb-nav-fixed">
   <?php
@@ -77,6 +93,9 @@ if (!isset($_SESSION['adminLogined'])) {
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <!-- alertfy -->
   <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+
+  <!-- html2 canva -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
 
 </html>

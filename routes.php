@@ -24,6 +24,9 @@ switch ($request_uri) {
     case "$adminBase/orders/delete?id=$id":
         include 'admin/orders/delete.php';
         break;
+    case "$adminBase/orders/view-print?track=$track":
+        include 'admin/orders/view-print.php';
+        break;
     case "$adminBase/orders/view?track=$track":
         include 'admin/orders/view.php';
         break;

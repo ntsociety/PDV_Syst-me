@@ -159,3 +159,16 @@ function dd($elemet)
 
     return var_dump($elemet);
 }
+function getCount($tableName)
+{
+    global $db_connect;
+    $table = validate($tableName);
+    $query = "SELECT * from $table";
+    $query_run = mysqli_query($db_connect, $query);
+    if ($query_run) {
+        $totalCount = mysqli_num_rows($query_run);
+        return $totalCount;
+    } else {
+        return "Quelques choses s'est mal passés";
+    }
+}
