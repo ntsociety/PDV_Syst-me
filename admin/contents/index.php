@@ -79,7 +79,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/pdv-systeme/admin/inc/ctx-head.php';
             </div>
         </div>
 
-        <?= var_dump($_SERVER) ?>
     </div>
 
 </div>
