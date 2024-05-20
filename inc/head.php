@@ -2,6 +2,19 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/pdv-systeme/config/function.php";
 
 ?>
+<style>
+    .btn-primary {
+        background-color: #175497 !important;
+    }
+
+    .bg-primary {
+        background-color: #175497 !important;
+    }
+
+    .text-primary {
+        background-color: #175497 !important;
+    }
+</style>
 <!doctype html>
 <html lang="fr">
 

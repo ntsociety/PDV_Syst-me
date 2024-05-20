@@ -31,6 +31,10 @@ $page = substr($_SERVER['REQUEST_URI'], 19);
                     <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                     Commandes
                 </a>
+                <a class="nav-link <?= $page == "inventory/" ? 'active' : '' ?>" href="<?= $adminBase ?>inventory">
+                    <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                    Inventaire
+                </a>
                 <div class="sb-sidenav-menu-heading">Interface</div>
                 <a class="nav-link
                 <?= ($page == "category/create") || ($page == "category/")  ? 'collapse active' : 'collapsed' ?>
