@@ -1,6 +1,25 @@
 <?php include 'inc/head.php' ?>
+<style>
+    html,
+    body {
+        height: 100%;
+    }
 
-<div class="py-5" style="background: url('/pdv-systeme/admin/assets/female.jpg')no-repeat center/cover;">
+    .main {
+        height: 100%;
+        width: 100%;
+        display: table;
+
+    }
+
+
+    .overlay {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+</style>
+<div class="main" style="background: url('/pdv-systeme/admin/assets/female.jpg')no-repeat center/cover;">
     <div class="overlay" style="background-color:rgba(0, 0, 0, 0.6);">
         <div class="container my-5">
             <div class="row">
