@@ -10,14 +10,14 @@ if (is_numeric($paraId)) {
         $deleteClient = destroy('customers', $clientId);
         if ($deleteClient) {
 
-            redirect("clients/clients", "Clients supprimé avec succès !");
+            redirect("clients", "Clients supprimé avec succès !");
         } else {
-            redirect("clients/clients", "Quelques choses s'est mal passés", false);
+            redirect("clients", "Quelques choses s'est mal passés", false);
         }
     } else {
 
-        redirect("clients/clients", "Quelques choses s'est mal passés", false);
+        redirect("clients", "Quelques choses s'est mal passés", false);
     }
 } else {
-    redirect("clients/clients", "Quelques choses s'est mal passés id $paraId", false);
+    redirect("clients", "Quelques choses s'est mal passés id $paraId", false);
 }

@@ -14,7 +14,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/pdv-systeme/admin/inc/ctx-head.php';
         <div class="card-body">
             <?php
             alertMessage() ?>
-            <div class="table-responsive">
+            <div class="table-responsive text-nowrap">
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -35,7 +35,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/pdv-systeme/admin/inc/ctx-head.php';
                                     <td><?= $admin['id'] ?></td>
                                     <td><?= $admin['name'] ?></td>
                                     <td><?= $admin['email'] ?></td>
-                                    <td class="d-flex column-gap-2">
+                                    <td class="d-flex gap-2">
                                         <a href="<?= $adminBase ?>admin-edit?id=<?= $admin['id'] ?>" class="btn btn-primary">Modifier</a>
                                         <a href="<?= $adminBase ?>admin-delete?id=<?= $admin['id'] ?>" onclick="return confirm('Voulez-vous le supprimer ?')" class="btn btn-danger">Supprimer</a>
                                     </td>

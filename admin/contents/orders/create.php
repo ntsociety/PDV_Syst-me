@@ -64,98 +64,109 @@ include $_SERVER['DOCUMENT_ROOT'] . '/pdv-systeme/admin/inc/ctx-head.php';
                     unset($_SESSION['produitItems']);
                 }
             ?>
-                <div class="table-responsive mb-3" id="produitContent">
-                    <table class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nom du Produit</th>
-                                <th>Prix</th>
-                                <th>Quantité</th>
-                                <th>Prix Total</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $i = 1;
-                            foreach ($sessionProduits as $key => $item) :
+                <div id="produitContent">
 
-                            ?>
+                    <div class="table-responsive mb-3 text-nowrap">
+
+                        <style>
+                            .table td,
+                            .table th {
+                                white-space: nowrap;
+                                width: 1%;
+                            }
+                        </style>
+                        <table class="table table-striped table-bordered">
+                            <thead>
                                 <tr>
-                                    <td><?= $i++ ?></td>
-
-                                    <td><?= $item['name'] ?></td>
-                                    <td><?= $item['prix'] ?></td>
-                                    <td>
-                                        <div class="input-group qtyBox">
-                                            <input type="hidden" value="<?= $item['produit_id']; ?>" class="prodId">
-                                            <button class="input-group-text decrement">-</button>
-                                            <input type="text" class="qty quantityInput" value="<?= $item['quantity'] ?>" id="">
-                                            <button class="input-group-text increment">+</button>
-                                        </div>
-                                    </td>
-                                    <td><?= number_format($item['prix'] * $item['quantity'], 0) ?></td>
-                                    <td class="d-flex gap-2">
-                                        <a href="<?= $adminBase ?>orders/item-delete?index=<?= $key ?>" class="btn btn-danger">Supprimer</a>
-                                    </td>
+                                    <th>ID</th>
+                                    <th>Nom du Produit</th>
+                                    <th>Prix</th>
+                                    <th>Quantité</th>
+                                    <th>Prix Total</th>
+                                    <th>Action</th>
                                 </tr>
-                            <?php
-                            endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $i = 1;
+                                foreach ($sessionProduits as $key => $item) :
 
-                <div class="mt-2">
-                    <hr>
-                    <div class="row" id="clientsSelectArea">
-                        <div class="col-md-4">
-                            <label for="">Sélectionnez méthode de payement</label>
-                            <select name="payement_mode" id="payement_mode" required class="form-select">
-                                <option value="">--Select--</option>
-                                <option value="Payement cash">Payement cash</option>
-                                <option value="Online payement">Payement en ligne</option>
-                            </select>
-                        </div>
-                        <?php
-                        ?>
+                                ?>
+                                    <tr>
+                                        <td><?= $i++ ?></td>
 
-                        <div class="col-md-4 mb-3" id="clientsSelectContent">
-                            <label for="">Client</label>
-                            <div class="input-group">
-                                <select name="customer_id" id="customerId" class="form-select form-select-field">
-                                    <option value="" selected hidden>Sélectionez le Client</option>
-                                    <?php
-                                    $customers = getAll("customers");
+                                        <td><?= $item['name'] ?></td>
+                                        <td><?= $item['prix'] ?></td>
+                                        <td>
+                                            <div class="input-group qtyBox">
+                                                <input type="hidden" value="<?= $item['produit_id']; ?>" class="prodId">
+                                                <button class="input-group-text decrement">-</button>
+                                                <input type="text" class="qty quantityInput" value="<?= $item['quantity'] ?>" id="">
+                                                <button class="input-group-text increment">+</button>
+                                            </div>
+                                        </td>
+                                        <td><?= number_format($item['prix'] * $item['quantity'], 0) ?></td>
+                                        <td class="d-flex gap-2">
+                                            <a href="<?= $adminBase ?>orders/item-delete?index=<?= $key ?>" class="btn btn-danger">Supprimer</a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
 
-                                    if (mysqli_num_rows($customers) > 0) :
-                                        foreach ($customers as $item) :
-
-                                    ?>
-                                            <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
-                                        <?php
-                                        endforeach; ?>
-
-                                    <?php else : ?>
-                                        <option value="" disabled>Pas de Client</option>
-                                    <?php
-                                    endif;
-
-                                    ?>
+                    <div class="mt-2">
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label for="">Sélectionnez méthode de payement</label>
+                                <select name="payement_mode" id="payement_mode" required class="form-select">
+                                    <option value="">--Select--</option>
+                                    <option value="Payement cash">Payement cash</option>
+                                    <option value="Online payement">Payement en ligne</option>
                                 </select>
-                                <span class="input-group-text p-0"><button class="btn btn-primary btn-sm" title="Ajouter client" id="addClient"><i class="bi bi-person-plus-fill"></i></button></span>
                             </div>
+                            <?php
+                            ?>
 
-                        </div>
-                        <div class="col-md-4">
-                            <br>
-                            <button class="btn btn-warning w-100 proceedToPlace">procéder à la commande</button>
+                            <div class="col-md-4 mb-3">
+                                <label for="">Client</label>
+                                <div class="input-group">
+                                    <select name="customer_id" id="customerId" class="form-select form-select-field">
+                                        <option value="" selected hidden>Sélectionez le Client</option>
+                                        <?php
+                                        $customers = getAll("customers");
+
+                                        if (mysqli_num_rows($customers) > 0) :
+                                            foreach ($customers as $item) :
+
+                                        ?>
+                                                <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
+                                            <?php
+                                            endforeach; ?>
+
+                                        <?php else : ?>
+                                            <option value="" disabled>Pas de Client</option>
+                                        <?php
+                                        endif;
+
+                                        ?>
+                                    </select>
+                                    <span class="input-group-text p-0"><button class="btn btn-primary btn-sm" title="Ajouter client" id="addClient"><i class="bi bi-person-plus-fill"></i></button></span>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <br>
+                                <button class="btn btn-warning w-100 proceedToPlace">procéder à la commande</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             <?php
             } else {
-                echo '<h5> Pas de élement ajouté</h5>';
+                echo '<h5> Pas de commande ajouté</h5>';
             }
             ?>
         </div>

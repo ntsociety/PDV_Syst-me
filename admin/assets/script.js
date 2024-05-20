@@ -126,7 +126,7 @@ $(document).ready(function() {
                     {
                         swal("Succès", response.message, response.status_type);
                         $('#addClientModal').modal('hide');
-                        $('#clientsSelectArea').load(" #clientsSelectContent");
+                        $('#produitArea').load(" #produitContent");
     
                     }else if(response.status == 422){
                         swal("Champs requis", response.message, response.status_type);

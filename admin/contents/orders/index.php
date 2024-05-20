@@ -9,10 +9,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/pdv-systeme/admin/inc/ctx-head.php';
             <div class="row">
                 <div class="col-md-4">
                     <h4 class="mb-0">Commandes
-                        <a href="<?= $adminBase ?>orders/create" class="btn btn-primary btn-sm float-end">Ajouter</a>
+
                     </h4>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 mt-sm-2">
                     <form action="" method="GET">
                         <div class="row g-1">
                             <div class="col-md-4">
@@ -33,12 +33,13 @@ include $_SERVER['DOCUMENT_ROOT'] . '/pdv-systeme/admin/inc/ctx-head.php';
                         </div>
                     </form>
                 </div>
+                <a href="<?= $adminBase ?>orders/create" class="btn btn-primary mt-2 float-end">Ajouter</a>
             </div>
         </div>
         <div class="card-body">
             <?php
             alertMessage() ?>
-            <div class="table-responsive">
+            <div class="table-responsive text-nowrap">
                 <table class="table table-striped table-bordered justify-content-center align-items-center">
                     <thead>
                         <tr>
@@ -82,7 +83,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/pdv-systeme/admin/inc/ctx-head.php';
 
                                     <td><?= $item['name'] ?></td>
                                     <td><?= $item['phone'] ?></td>
-                                    <td><?= date('Y-m-d', strtotime($item['date_commande']))  ?></td>
+                                    <td><?= date('d-m-Y', strtotime($item['date_commande']))  ?></td>
                                     <td><?= $item['status_commande'] ?></td>
                                     <td><?= $item['payement_mod'] ?></td>
                                     <td class="d-flex gap-2">

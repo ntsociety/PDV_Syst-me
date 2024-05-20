@@ -13,7 +13,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/pdv-systeme/admin/inc/ctx-head.php';
         <div class="card-body">
             <?php
             alertMessage() ?>
-            <div class="table-responsive">
+            <div class="table-responsive text-nowrap">
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>

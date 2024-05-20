@@ -91,7 +91,7 @@ if (isset($_POST['save'])) {
         $result = insert('supliers', $data);
         if ($result) {
 
-            redirect('supliers/supliers', "Fournisseur ajouté avec succès !");
+            redirect('supliers', "Fournisseur ajouté avec succès !");
         } else {
             redirect('supliers/create', "Quelques choses s'est mal passés.", false);
         }

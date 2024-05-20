@@ -30,7 +30,7 @@ if (!isset($_SESSION['produitItems'])) {
         <div class="col-md-12">
             <div class="card mt-4">
                 <div class="card-header">
-                    <h4 class="mb-0">Commandes Sommaire
+                    <h4 class="mb-0">Commande Sommaire
                         <a href="<?= $adminBase ?>orders/create" class="btn btn-primary float-end">Retour</a>
                     </h4>
                 </div>

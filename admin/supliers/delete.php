@@ -10,14 +10,14 @@ if (is_numeric($paraId)) {
         $deleteSuplier = destroy('supliers', $suplierId);
         if ($deleteSuplier) {
 
-            redirect("supliers/supliers", "Fournisseur supprimé avec succès !");
+            redirect("supliers", "Fournisseur supprimé avec succès !");
         } else {
-            redirect("supliers/supliers", "Quelques choses s'est mal passés", false);
+            redirect("supliers", "Quelques choses s'est mal passés", false);
         }
     } else {
 
-        redirect("supliers/supliers", "Quelques choses s'est mal passés", false);
+        redirect("supliers", "Quelques choses s'est mal passés", false);
     }
 } else {
-    redirect("supliers/supliers", "Quelques choses s'est mal passés id $paraId", false);
+    redirect("supliers", "Quelques choses s'est mal passés id $paraId", false);
 }

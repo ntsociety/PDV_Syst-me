@@ -7,7 +7,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/pdv-systeme/admin/inc/ctx-head.php';
 
     <div class="row">
         <div class="col-md-12">
-            <h1 class="mt-4">Dashboard</h1>
+            <h1 class="mt-4">Tableau de bord</h1>
 
             <?php
             alertMessage() ?>
