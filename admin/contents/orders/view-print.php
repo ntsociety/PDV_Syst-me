@@ -21,7 +21,7 @@ if (!isset($_GET['track']) || empty($_GET['track'])) {
                 $orders_query = "SELECT o.*, c.* from orders o, customers c 
                     where c.id=o.client_id and tracking_no = '$tracking_no' limit 1";
                 $orders = mysqli_query($db_connect, $orders_query);
-                if (mysqli_num_rows($orders) > 0) :
+                if (mysqli_num_rows($orders) > 0) {
                     $orderData = mysqli_fetch_assoc($orders);
                     $orderId = $orderData['id'];
                     // print_r($orderData); 
@@ -53,19 +53,17 @@ if (!isset($_GET['track']) || empty($_GET['track'])) {
                         </tbody>
                     </table>
 
-                <?php else : ?>
-                    <p colspan="4" class="text-center">Pas de données</p>
-                <?php
-                endif;
+                <?php } else {
+                    return header('location: 404');
+                } ?>
 
-                ?>
 
                 <?php
                 $orderItemsQuery = "SELECT oi.quantity as orderItemsQty, oi.prix as orderItemsPrice, o.*, oi.*, p.* 
                 from orders o, order_items oi, produits p where oi.order_id= o.id and p.id = oi.prod_id
                 and o.tracking_no= '$tracking_no'";
                 $orderItems = mysqli_query($db_connect, $orderItemsQuery);
-                if (mysqli_num_rows($orderItems) > 0) :
+                if (mysqli_num_rows($orderItems) > 0) {
 
                 ?>
                     <div class="table-responsive mb-3">
@@ -106,11 +104,9 @@ if (!isset($_GET['track']) || empty($_GET['track'])) {
                             </tbody>
                         </table>
                     </div>
-                <?php else : ?>
-                    <p colspan="4" class="text-center">Pas de données</p>
-                <?php
-                endif;
-
+                <?php } else {
+                    return header('location: 404');
+                }
                 ?>
             </div>
             <div class="mt-4 text-end">

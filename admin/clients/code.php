@@ -104,7 +104,7 @@ if (isset($_POST['addClient'])) {
     $status = isset($_POST['status']) == true ? 1 : 0;
     // var_dump($email != "");
     // return;
-    dd($email);
+    // dd($email);
 
     if ($name != "" && $phone != "") {
         $phoneCheck = mysqli_query($db_connect, "SELECT * from customers where phone = '$phone'");

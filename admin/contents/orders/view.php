@@ -23,7 +23,7 @@ if (!isset($_GET['track']) || empty($_GET['track'])) {
             $orders_query = "SELECT o.*, c.* from orders o, customers c 
             where c.id=o.client_id and tracking_no = '$tracking_no' order by o.id";
             $orders = mysqli_query($db_connect, $orders_query);
-            if (mysqli_num_rows($orders) > 0) :
+            if (mysqli_num_rows($orders) > 0) {
                 $orderData = mysqli_fetch_assoc($orders);
                 $orderId = $orderData['id']; ?>
 
@@ -60,10 +60,9 @@ if (!isset($_GET['track']) || empty($_GET['track'])) {
                     </div>
                 </div>
 
-            <?php else : ?>
-                <p colspan="4" class="text-center">Pas de données</p>
-            <?php
-            endif;
+            <?php } else {
+                return header('location: 404');
+            }
 
             ?>
             <?php
@@ -71,7 +70,7 @@ if (!isset($_GET['track']) || empty($_GET['track'])) {
                 from orders o, order_items oi, produits p where oi.order_id= o.id and p.id = oi.prod_id
                 and o.tracking_no= '$tracking_no'";
             $orderItems = mysqli_query($db_connect, $orderItemsQuery);
-            if (mysqli_num_rows($orderItems) > 0) :
+            if (mysqli_num_rows($orderItems) > 0) {
 
             ?>
                 <h4 class="my-3">Contenu de la commande</h4>
@@ -102,10 +101,9 @@ if (!isset($_GET['track']) || empty($_GET['track'])) {
                         </tr>
                     </tbody>
                 </table>
-            <?php else : ?>
-                <p colspan="4" class="text-center">Pas de données</p>
-            <?php
-            endif;
+            <?php } else {
+                return header('location: 404');
+            }
 
             ?>
         </div>
